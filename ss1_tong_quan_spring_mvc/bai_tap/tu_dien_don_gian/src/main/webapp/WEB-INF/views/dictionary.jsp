@@ -5,7 +5,7 @@
     <title>TRANSLATE</title>
 </head>
 <body>
-<form action="/translate" method="post">
+<form action="/search" method="post">
     <h3>Dictionary</h3>
     <label>
         Nhập từ cần dịch:
