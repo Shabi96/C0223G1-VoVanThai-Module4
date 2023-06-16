@@ -9,23 +9,25 @@ import java.util.Map;
 
 @Repository
 public class DictionaryRepository implements IDictionaryRepository {
+    private static Map<String, String> stringMap = new HashMap<>();
+    static {
+        stringMap.put("book", "quyển sách");
+        stringMap.put("computer", "máy tính");
+        stringMap.put("mouse", "chuột");
+        stringMap.put("phone", "điện thoại");
+        stringMap.put("flower", "hoa");
+        stringMap.put("water", "nước");
+        stringMap.put("fan", "cái quạt");
+        stringMap.put("sky", "Sơn Tùng MTP");
+        stringMap.put("transaction", "tiến trình");
+        stringMap.put("pink", "màu hồng");
+    }
     @Override
     public String getWord(String word) {
-        Map<String, String> dictionaryMap = new HashMap<>();
-        dictionaryMap.put("book", "quyển sách");
-        dictionaryMap.put("computer", "máy tính");
-        dictionaryMap.put("mouse", "chuột");
-        dictionaryMap.put("phone", "điện thoại");
-        dictionaryMap.put("flower", "hoa");
-        dictionaryMap.put("water", "nước");
-        dictionaryMap.put("fan", "cái quạt");
-        dictionaryMap.put("sky", "Sơn Tùng MTP");
-        dictionaryMap.put("transaction", "tiến trình");
-        dictionaryMap.put("pink", "màu hồng");
         String result = null;
-        for (String str : dictionaryMap.keySet()) {
+        for (String str : stringMap.keySet()) {
             if (str.equals(word.toLowerCase(Locale.ROOT))) {
-                result = dictionaryMap.get(str);
+                result = stringMap.get(str);
                 break;
             }
         }
