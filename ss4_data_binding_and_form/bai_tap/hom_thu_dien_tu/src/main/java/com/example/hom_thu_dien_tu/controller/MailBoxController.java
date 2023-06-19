@@ -23,7 +23,9 @@ public class MailBoxController {
 
     @GetMapping("/setting")
     public String getFormSetting(Model model) {
-        model.addAttribute("mail", new MailBox());
+        model.addAttribute("languages", mailBoxService.getLanguageList());
+        model.addAttribute("pageSize", mailBoxService.getPageSizeList());
+        model.addAttribute("mail", mailBoxService.getMailBox());
         return "index";
     }
 

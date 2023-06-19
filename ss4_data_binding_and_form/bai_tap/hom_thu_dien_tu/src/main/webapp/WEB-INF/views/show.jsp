@@ -25,8 +25,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<h2 style="color: blue">Configuration</h2>
 <form>
-    <table>
+    <table class="table" style="width: 50%; border: 1px">
         <tr>
             <th>Languages: </th>
             <th>${mail.languages}</th>

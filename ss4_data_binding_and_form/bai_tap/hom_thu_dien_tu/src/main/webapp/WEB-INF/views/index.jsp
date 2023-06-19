@@ -13,28 +13,17 @@
 <body>
 <h2>Settings</h2>
 <form:form method="post" action="/update" modelAttribute="mail">
-    <table>
+    <table style="font-size: large">
         <tr>
             <th><form:label path="languages">Languages: </form:label></th>
-            <th><form:select path="languages">
-                    <form:option value="English" label="English"/>
-                    <form:option value="Vietnamese" label="Vietnamese"/>
-                    <form:option value="Japanese" label="Japanese"/>
-                    <form:option value="Chinese" label="Chinese"/>
-                </form:select>
+            <th>
+                <form:select path="languages" items="${languages}"/>
             </th>
         </tr>
         <tr>
             <th><form:label path="pageSize">Page Size: </form:label></th>
             <th>
-                Show <form:select path="pageSize">
-                        <form:option value="5">5</form:option>
-                        <form:option value="10">10</form:option>
-                        <form:option value="15">15</form:option>
-                        <form:option value="25">25</form:option>
-                        <form:option value="50">50</form:option>
-                        <form:option value="100">100</form:option>
-                    </form:select>
+                Show <form:select path="pageSize" items="${pageSize}"/>
                 emails per page
             </th>
         </tr>
