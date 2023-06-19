@@ -26,24 +26,7 @@ public class CalculatorController {
         if (num1 == null || num2 == null) {
             model.addAttribute("result", "Can not be empty!!!!");
         } else {
-            switch (count) {
-                case "addition":
-                    model.addAttribute("result", calculatorService.addition(num1, num2));
-                    break;
-                case "subtraction":
-                    model.addAttribute("result", calculatorService.subtraction(num1, num2));
-                    break;
-                case "multiplication":
-                    model.addAttribute("result", calculatorService.multiplication(num1, num2));
-                    break;
-                case "division":
-                    if (num2 == 0) {
-                        model.addAttribute("result", "Can't division by 0!!");
-                    } else {
-                        model.addAttribute("result", calculatorService.division(num1, num2));
-                    }
-                    break;
-            }
+            model.addAttribute("result", calculatorService.calculator(num1, num2, count));
         }
         return "index";
     }
