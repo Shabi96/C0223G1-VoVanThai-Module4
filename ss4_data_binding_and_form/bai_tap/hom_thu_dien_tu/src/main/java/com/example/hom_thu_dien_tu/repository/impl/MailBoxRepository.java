@@ -10,27 +10,17 @@ import java.util.List;
 @Repository
 public class MailBoxRepository implements IMailBoxRepository {
     private static final MailBox mailBox = new MailBox();
-
+    private static final List<String> languageList = new ArrayList<>();
+    private static final List<Integer> pageSizeList = new ArrayList<>();
     static {
         mailBox.setLanguages("Vietnamese");
         mailBox.setPageSize(5);
         mailBox.setFilter(true);
         mailBox.setSignature("Thor");
-
-    }
-
-    private static List<String> languageList = new ArrayList<>();
-
-    static {
         languageList.add("English");
         languageList.add("Vietnamese");
         languageList.add("Japanese");
         languageList.add("Chinese");
-    }
-
-    private static List<Integer> pageSizeList = new ArrayList<>();
-
-    static {
         pageSizeList.add(5);
         pageSizeList.add(10);
         pageSizeList.add(15);
