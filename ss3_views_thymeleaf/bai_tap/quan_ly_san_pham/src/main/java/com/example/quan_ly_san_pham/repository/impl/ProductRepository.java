@@ -72,4 +72,14 @@ public class ProductRepository implements IProductRepository {
             return productListSearch;
         }
     }
+
+    @Override
+    public Integer findId(Integer id) {
+        for (int i = 0; i < productList.size(); i++) {
+            if(productList.get(i).getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

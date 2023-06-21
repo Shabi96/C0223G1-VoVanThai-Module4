@@ -43,4 +43,9 @@ public class ProductService implements IProductService {
     public List<Product> searchByName(String name) {
         return productRepository.searchByName(name);
     }
+
+    @Override
+    public Integer findId(Integer id) {
+        return productRepository.findId(id);
+    }
 }

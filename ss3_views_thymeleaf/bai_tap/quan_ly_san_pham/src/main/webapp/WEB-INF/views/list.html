@@ -44,7 +44,7 @@
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.company}"></td>
                 <td><a role="button" class="btn btn-outline-success"
-                       th:href="@{/product/{id}/update(id=${product.id})}">Update</a></td>
+                       th:href="@{/product/update/{id}(id=${product.id})}">Update</a></td>
                 <td>
                     <a role="button" class="btn btn-outline-danger"
                        data-bs-toggle="modal" data-bs-target="#modelId"
@@ -52,7 +52,7 @@
                     </a>
                 </td>
                 <td><a role="button" class="btn btn-outline-success"
-                       th:href="@{/product/{id}/detail(id=${product.id})}">Detail</a></td>
+                       th:href="@{/product/detail/{id}(id=${product.id})}">Detail</a></td>
             </tr>
             </tbody>
         </table>

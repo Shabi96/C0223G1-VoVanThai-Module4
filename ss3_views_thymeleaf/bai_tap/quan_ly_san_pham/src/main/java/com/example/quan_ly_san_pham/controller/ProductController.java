@@ -34,28 +34,44 @@ public class ProductController {
         return "redirect:/product";
     }
 
-    @GetMapping("/{id}/update")
-    public String showFormUpdate(Model model, @PathVariable Integer id) {
-        model.addAttribute("product", productService.getProductById(id));
-        return "update";
+    @GetMapping("/update/{id}")
+    public String showFormUpdate(Model model, @PathVariable Integer id, RedirectAttributes redirectAttributes) {
+        if (productService.findId(id) >= 0) {
+            model.addAttribute("product", productService.getProductById(id));
+            return "update";
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Product is not exist!!");
+            return "redirect:/product";
+        }
     }
 
     @PostMapping("/updateProduct")
-    public String updateProduct(@ModelAttribute Product product) {
+    public String updateProduct(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         productService.updateProduct(product, product.getId());
+        redirectAttributes.addFlashAttribute("message", "Update successfully!!!");
         return "redirect:/product";
     }
 
     @PostMapping("/delete")
-    public String deleteProduct(@RequestParam("idDelete") Integer id) {
-        productService.deleteProduct(id);
+    public String deleteProduct(@RequestParam("idDelete") Integer id, RedirectAttributes redirectAttributes) {
+        if (productService.findId(id) >= 0) {
+            productService.deleteProduct(id);
+            redirectAttributes.addFlashAttribute("message", "Delete successfully!!!");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Product is not exist!!");
+        }
         return "redirect:/product";
     }
 
-    @GetMapping("/{id}/detail")
-    public String showDetailForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("product", productService.getProductById(id));
-        return "detail";
+    @GetMapping("/detail/{id}")
+    public String showDetailForm(@PathVariable Integer id, Model model, RedirectAttributes redirectAttributes) {
+        if(productService.getProductById(id) != null) {
+            model.addAttribute("product", productService.getProductById(id));
+            return "detail";
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Product is not exist!!");
+            return "redirect:/product";
+        }
     }
 
     @GetMapping("search")
