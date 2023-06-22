@@ -15,7 +15,6 @@ public class ProductRepository implements IProductRepository {
 
     private static final String SELECT_ALL_PRODUCT_QUERY = "FROM Product";
 
-
     @Override
     public List<Product> getProductList() {
         return ConnectionUtils.getEntityManager().createQuery(SELECT_ALL_PRODUCT_QUERY).getResultList();
@@ -114,6 +113,4 @@ public class ProductRepository implements IProductRepository {
         }
         return false;
     }
-
-
 }
