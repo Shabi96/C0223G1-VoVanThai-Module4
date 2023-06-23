@@ -1,11 +1,12 @@
 package com.example.ung_dung_blog.service;
 
 import com.example.ung_dung_blog.model.Blog;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface IBlogService {
-    List<Blog> getAllBlog();
+    Page<Blog> getAllBlog(Pageable pageable);
 
     void addNewBlog(Blog blog);
 
@@ -15,5 +16,7 @@ public interface IBlogService {
 
     void deleteBlog(Integer id);
 
-    List<Blog> searchByName(String name);
+    Page<Blog> searchByName(String name, Pageable pageable);
+
+    Page<Blog> findByCategoryId(Integer id, Pageable pageable);
 }

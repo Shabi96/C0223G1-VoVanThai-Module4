@@ -4,9 +4,10 @@ import com.example.ung_dung_blog.model.Blog;
 import com.example.ung_dung_blog.repository.IBlogRepository;
 import com.example.ung_dung_blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class BlogService implements IBlogService {
@@ -15,19 +16,19 @@ public class BlogService implements IBlogService {
     private IBlogRepository blogRepository;
 
     @Override
-    public List<Blog> getAllBlog() {
-        return blogRepository.findAll();
+    public Page<Blog> getAllBlog(Pageable pageable) {
+        return blogRepository.getAllByFlagDeleteIsFalse(pageable);
     }
 
     @Override
     public void addNewBlog(Blog blog) {
+        blog.setFlagDelete(false);
         blogRepository.save(blog);
     }
 
     @Override
     public Blog findById(Integer id) {
-        return blogRepository.findById(id).
-                orElse(null);
+        return blogRepository.findByIdAndFlagDeleteIsFalse(id);
     }
 
     @Override
@@ -37,11 +38,18 @@ public class BlogService implements IBlogService {
 
     @Override
     public void deleteBlog(Integer id) {
-        blogRepository.deleteById(id);
+        Blog deleteBlog = this.findById(id);
+        deleteBlog.setFlagDelete(true);
+        blogRepository.save(deleteBlog);
     }
 
     @Override
-    public List<Blog> searchByName(String name) {
-        return blogRepository.findByNameContaining(name);
+    public Page<Blog> searchByName(String name, Pageable pageable) {
+        return blogRepository.findByNameContainingAndFlagDeleteIsFalse(name, pageable);
+    }
+
+    @Override
+    public Page<Blog> findByCategoryId(Integer id, Pageable pageable) {
+        return blogRepository.findByCategoryIdAndFlagDeleteIsFalse(id, pageable);
     }
 }

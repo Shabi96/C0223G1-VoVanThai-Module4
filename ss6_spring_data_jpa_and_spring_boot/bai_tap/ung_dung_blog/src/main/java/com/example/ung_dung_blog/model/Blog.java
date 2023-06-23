@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table()
 public class Blog {
 
     @Id
@@ -15,17 +14,25 @@ public class Blog {
     private String content;
     @Column(name = "create_date")
     private LocalDateTime date;
+    @Column(columnDefinition = "long")
     private String img;
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "blog_type_id")
+    private Category category;
+    @Column(name = "is_delete")
+    private boolean flagDelete;
 
     public Blog() {
     }
 
-    public Blog(Integer id, String name, String content, LocalDateTime date, String img) {
+    public Blog(Integer id, String name, String content, LocalDateTime date, String img, Category category, boolean flagDelete) {
         this.id = id;
         this.name = name;
         this.content = content;
         this.date = date;
         this.img = img;
+        this.category = category;
+        this.flagDelete = flagDelete;
     }
 
     public Integer getId() {
@@ -66,5 +73,21 @@ public class Blog {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public boolean getFlagDelete() {
+        return flagDelete;
+    }
+
+    public void setFlagDelete(boolean flagDelete) {
+        this.flagDelete = flagDelete;
     }
 }
