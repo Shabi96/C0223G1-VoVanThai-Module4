@@ -30,11 +30,17 @@
             <td th:text="${song.name}"></td>
             <td th:text="${song.artist}"></td>
             <td th:text="${song.kindOfMusic}"></td>
-            <td><a role="button" class="btn btn-outline-success"
-                   th:href="@{/song/update/{id}(id=${song.id})}">Update</a></td>
-            <td><a role="button" class="btn btn-outline-danger"
+            <td>
+                <a role="button" class="btn btn-outline-success"
+                   th:href="@{/song/update/{id}(id=${song.id})}">Update
+                </a>
+            </td>
+            <td>
+                <a role="button" class="btn btn-outline-danger"
                    data-bs-toggle="modal" data-bs-target="#modelId"
-                   th:attr="onclick=|remove('${song.id}', '${song.name}')|">Delete</a></td>
+                   th:attr="onclick=|remove('${song.id}', '${song.name}')|">Delete
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -51,7 +57,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
