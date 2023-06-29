@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <h2 style="text-align: center">BOOK MANAGEMENT</h2>
-    <form th:action="@{/book/borrow}" method="post" th:object="${book}">
+    <form th:action="@{/borrow/newBorrow}" method="post" th:object="${book}">
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{amount}">
         <label for="name">

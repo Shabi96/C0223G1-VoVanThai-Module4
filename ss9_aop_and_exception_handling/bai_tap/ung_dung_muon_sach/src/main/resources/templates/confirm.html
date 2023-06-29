@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <h2 style="text-align: center">BORROW CONFIRM</h2>
-    <form th:action="@{/book/confirm}" method="post" th:object="${borrowDelete}">
+    <form th:action="@{/borrow/confirm}" method="post" th:object="${borrowDelete}">
         <input type="hidden" th:field="*{id}">
         <label for="name">
             Book's Name:
