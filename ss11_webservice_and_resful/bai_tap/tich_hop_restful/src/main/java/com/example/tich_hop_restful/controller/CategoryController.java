@@ -22,13 +22,17 @@ public class CategoryController {
     private IBlogService blogService;
 
     @GetMapping()
-    public List<Category> getAll() {
-        return categoryService.getAll();
+    public ResponseEntity<List<Category>> getAll() {
+        return new ResponseEntity<>(categoryService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping()
-    public void createCategory(@RequestBody Category category) {
+    public ResponseEntity<?> createCategory(@RequestBody Category category) {
+        if (categoryService.findById(category.getId()) != null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
         categoryService.createCategory(category);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("{id}")
