@@ -15,8 +15,8 @@ public class BlogService implements IBlogService {
     private IBlogRepository blogRepository;
 
     @Override
-    public List<Blog> getAll() {
-        return blogRepository.getAllByFlagDeleteIsFalse();
+    public List<Blog> getAll(Integer number) {
+        return blogRepository.getAllByFlagDeleteIsFalse(number);
     }
 
     @Override
@@ -45,5 +45,10 @@ public class BlogService implements IBlogService {
     @Override
     public List<Blog> getByCategoryId(Integer id) {
         return blogRepository.getBlogByCategoryIdAndFlagDeleteIsFalse(id);
+    }
+
+    @Override
+    public List<Blog> searchByName(String name) {
+        return blogRepository.getBlogByNameContainsIgnoreCaseAndFlagDeleteIsFalse(name);
     }
 }

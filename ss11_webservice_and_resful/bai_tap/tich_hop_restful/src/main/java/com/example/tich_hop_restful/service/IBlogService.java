@@ -2,10 +2,11 @@ package com.example.tich_hop_restful.service;
 
 import com.example.tich_hop_restful.model.Blog;
 
+
 import java.util.List;
 
 public interface IBlogService {
-    List<Blog> getAll();
+    List<Blog> getAll(Integer number);
 
     Blog getById(Integer id);
 
@@ -16,4 +17,6 @@ public interface IBlogService {
     void deleteBlog(Integer id);
 
     List<Blog> getByCategoryId(Integer id);
+
+    List<Blog> searchByName(String name);
 }
