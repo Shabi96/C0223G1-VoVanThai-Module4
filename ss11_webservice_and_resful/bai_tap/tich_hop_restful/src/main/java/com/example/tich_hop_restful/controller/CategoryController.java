@@ -5,9 +5,6 @@ import com.example.tich_hop_restful.model.Category;
 import com.example.tich_hop_restful.service.IBlogService;
 import com.example.tich_hop_restful.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +32,7 @@ public class CategoryController {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         categoryService.createCategory(category);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
