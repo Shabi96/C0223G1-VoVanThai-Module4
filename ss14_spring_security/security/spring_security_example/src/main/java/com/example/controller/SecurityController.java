@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/security")
-public class MainController {
+public class SecurityController {
 
     @GetMapping("")
     public String welcomePage(Model model) {
